@@ -1,19 +1,19 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+notes:
+  label: Notes
+  permalink: /notes
+  description: Posts about notes workflow and knowledge capture.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+blog:
+  label: Blog
+  permalink: /blog
+  description: Formal and reviewed long-form articles.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+policy:
+  label: Policy
+  permalink: /policy
+  description: Editorial policy and writing standards.
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+writing:
+  label: Writing
+  permalink: /writing
+  description: Guidance on content quality and publishing standards.

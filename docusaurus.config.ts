@@ -5,8 +5,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "Neurocylcq",
+  tagline: "Knowledge base, formal articles, and project wikis",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -35,27 +35,32 @@ const config: Config = {
     locales: ["en"],
   },
 
+  themes: [
+    '@docusaurus/theme-live-codeblock',
+    '@docusaurus/theme-mermaid'
+  ],
+
+  markdown: {
+    mermaid: true,
+  },
+
   presets: [
     [
       "classic",
       {
         docs: {
-          sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          sidebarPath: "./sidebarsNotes.ts",
+          routeBasePath: "notes",
         },
         blog: {
+          blogTitle: "Blog",
+          blogDescription: "Reviewed posts with references and stronger validation.",
+          routeBasePath: "blog",
           showReadingTime: true,
           feedOptions: {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -68,59 +73,99 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    "./plugins/notes-status-validator.cjs",
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "projects",
+        path: "projects",
+        routeBasePath: "projects",
+        sidebarPath: "./sidebarsProjects.ts",
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: "dark",
+      respectPrefersColorScheme: false,
     },
     navbar: {
-      title: "My Site",
+      title: "Neurocylcq",
       logo: {
-        alt: "My Site Logo",
+        alt: "Neurocylcq Logo",
         src: "img/logo.svg",
       },
       items: [
+        { to: "/", label: "Home", activeBaseRegex: "^/$", position: "left" },
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          type: "dropdown",
           position: "left",
-          label: "Tutorial",
+          label: "Blog",
+          items: [
+            { to: "/blog", label: "All Posts" },
+            { to: "/blog/tags", label: "Tags" },
+            { to: "/blog/writing-standards", label: "Writing Standards" },
+          ],
         },
-        { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          type: "dropdown",
+          position: "left",
+          label: "Notes",
+          items: [
+            { to: "/notes", label: "Overview" },
+            { to: "/notes/machine-learning", label: "Machine Learning" },
+            { to: "/notes/computer-science", label: "Computer Science" },
+            { to: "/notes/status-system", label: "Status System" },
+          ],
+        },
+        { to: "/projects", label: "Projects", position: "left" },
+        { to: "/apps", label: "Apps", position: "left", className: "navbar-apps-pill" },
+        { to: "/about", label: "About", position: "left" },
+        {
+          href: "https://github.com/Neurocylcq",
           label: "GitHub",
           position: "right",
         },
       ],
     },
     footer: {
-      style: "dark",
       links: [
         {
-          title: "Docs",
+          title: "Notes",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
+              label: "Overview",
+              to: "/notes",
+            },
+            {
+              label: "Machine Learning",
+              to: "/notes/machine-learning",
+            },
+            {
+              label: "Computer Science",
+              to: "/notes/computer-science",
             },
           ],
         },
         {
-          title: "Community",
+          title: "Apps",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              label: "Frontend Apps",
+              to: "/apps",
             },
+          ],
+        },
+        {
+          title: "Projects",
+          items: [
             {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
+              label: "Project Wiki",
+              to: "/projects",
             },
           ],
         },
@@ -133,17 +178,30 @@ const config: Config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/Neurocylcq",
+            },
+          ],
+        },
+        {
+          title: "About",
+          items: [
+            {
+              label: "About This Site",
+              to: "/about",
+            },
+            {
+              label: "Writing Standards",
+              to: "/blog/writing-standards",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Neurocylcq, Inc. Built with Docusaurus.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-    },
+      theme: prismThemes.vsLight,
+      darkTheme: prismThemes.vsDark,
+    }
   } satisfies Preset.ThemeConfig,
 };
 

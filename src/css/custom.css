@@ -1,30 +1,273 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: "Cascadia Code", "Fira Code", "JetBrains Mono", "SF Mono", "Menlo", monospace;
+  --ifm-heading-font-family: "Cascadia Code", "Fira Code", "JetBrains Mono", "SF Mono", "Menlo", monospace;
+  --ifm-code-font-size: 92%;
+
+  --site-surface-0: #f7f9fc;
+  --site-surface-1: #eef2f7;
+  --site-surface-2: #e3e9f2;
+  --site-border: #cfd8e6;
+  --site-muted: #5c6880;
+  --site-muted-strong: #2f3a4d;
+  --site-warning-bg: rgba(235, 166, 58, 0.15);
+  --site-warning-border: rgba(188, 120, 16, 0.42);
+  --site-warning-text: #634200;
+
+  --ifm-background-color: var(--site-surface-0);
+  --ifm-background-surface-color: var(--site-surface-1);
+  --ifm-navbar-background-color: #f3f6fb;
+  --ifm-footer-background-color: #edf2f9;
+  --ifm-toc-border-color: var(--site-border);
+
+  --ifm-color-primary: #005fb8;
+  --ifm-color-primary-dark: #0055a5;
+  --ifm-color-primary-darker: #00509c;
+  --ifm-color-primary-darkest: #00427f;
+  --ifm-color-primary-light: #0069cb;
+  --ifm-color-primary-lighter: #006ed4;
+  --ifm-color-primary-lightest: #1d7ce0;
+
+  --ifm-link-color: #005fb8;
+  --ifm-color-content: #252526;
+  --ifm-color-content-secondary: #3c3c3c;
+  --ifm-menu-color: #252526;
+  --ifm-menu-color-active: #005fb8;
+  --ifm-menu-color-background-active: rgba(0, 95, 184, 0.1);
+  --ifm-breadcrumb-color-active: #005fb8;
+  --ifm-card-border-radius: 12px;
+  --ifm-global-radius: 10px;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='light'] {
+  --site-surface-0: #f7f9fc;
+  --site-surface-1: #eef2f7;
+  --site-surface-2: #e3e9f2;
+  --site-border: #cfd8e6;
+  --site-muted: #5c6880;
+  --site-muted-strong: #2f3a4d;
+  --site-warning-bg: rgba(235, 166, 58, 0.15);
+  --site-warning-border: rgba(188, 120, 16, 0.42);
+  --site-warning-text: #634200;
+
+  --ifm-background-color: var(--site-surface-0);
+  --ifm-background-surface-color: var(--site-surface-1);
+  --ifm-navbar-background-color: #f3f6fb;
+  --ifm-footer-background-color: #edf2f9;
+  --ifm-color-content: #252526;
+  --ifm-color-content-secondary: #3c3c3c;
+  --ifm-link-color: #005fb8;
+  --ifm-menu-color: #252526;
+  --ifm-menu-color-active: #005fb8;
+  --ifm-menu-color-background-active: rgba(0, 95, 184, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
+}
+
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --site-surface-0: #1e1e1e;
+  --site-surface-1: #252526;
+  --site-surface-2: #2d2d30;
+  --site-border: #3c3c3c;
+  --site-muted: #8f8f95;
+  --site-muted-strong: #c6c6c8;
+  --site-warning-bg: rgba(255, 166, 0, 0.08);
+  --site-warning-border: rgba(255, 166, 0, 0.42);
+  --site-warning-text: #ffd891;
+
+  --ifm-background-color: var(--site-surface-0);
+  --ifm-background-surface-color: var(--site-surface-1);
+  --ifm-navbar-background-color: #181818;
+  --ifm-footer-background-color: #181818;
+  --ifm-color-primary: #569cd6;
+  --ifm-color-primary-dark: #418fcf;
+  --ifm-color-primary-darker: #3287cb;
+  --ifm-color-primary-darkest: #2a70a9;
+  --ifm-color-primary-light: #6aa9db;
+  --ifm-color-primary-lighter: #79b1df;
+  --ifm-color-primary-lightest: #9cc5e8;
+  --ifm-link-color: #4fc1ff;
+  --ifm-color-content: #d4d4d4;
+  --ifm-color-content-secondary: #c0c0c0;
+  --ifm-menu-color: #d4d4d4;
+  --ifm-menu-color-active: #9cdcfe;
+  --ifm-menu-color-background-active: rgba(86, 156, 214, 0.14);
+  --ifm-breadcrumb-color-active: #9cdcfe;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.04);
+}
+
+html,
+body {
+  background: var(--site-surface-0);
+}
+
+.navbar,
+.footer {
+  border-top: 1px solid var(--site-border);
+  border-bottom: 1px solid var(--site-border);
+}
+
+.footer {
+  background: linear-gradient(180deg, var(--site-surface-1), var(--site-surface-0));
+  color: var(--ifm-color-content);
+}
+
+.footer__title,
+.footer__link-item,
+.footer__copyright {
+  color: var(--ifm-color-content);
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-link-color);
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--site-border);
+}
+
+.menu__link {
+  border-radius: 8px;
+}
+
+.navbar__link {
+  border-radius: 7px;
+  transition: background-color 130ms ease, color 130ms ease;
+}
+
+.navbar__link:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 9%, transparent 91%);
+  text-decoration: none;
+}
+
+.navbar__link--active {
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.navbar-apps-pill .navbar__link {
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 60%, var(--site-border) 40%);
+  border-radius: 999px;
+  padding: 0.28rem 0.72rem;
+  background: color-mix(in srgb, var(--ifm-color-primary) 11%, transparent 89%);
+}
+
+.navbar-apps-pill .navbar__link:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 18%, transparent 82%);
+}
+
+.button {
+  border-radius: 10px;
+}
+
+.button--outline {
+  border: 1px solid var(--site-border);
+}
+
+.theme-doc-markdown,
+.theme-blog-markdown {
+  border: 1px solid var(--site-border);
+  border-radius: 14px;
+  padding: 1.2rem 1.25rem;
+  background:
+    linear-gradient(165deg, color-mix(in srgb, var(--site-surface-1) 96%, #000 4%), var(--site-surface-1));
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.11);
+}
+
+.theme-doc-markdown h1,
+.theme-blog-markdown h1 {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--site-border);
+}
+
+.theme-doc-markdown h2,
+.theme-blog-markdown h2 {
+  margin-top: 1.45rem;
+  padding-left: 0.62rem;
+  border-left: 3px solid color-mix(in srgb, var(--ifm-color-primary) 55%, transparent 45%);
+}
+
+.theme-doc-markdown hr,
+.theme-blog-markdown hr {
+  border-color: color-mix(in srgb, var(--site-border) 76%, transparent 24%);
+}
+
+.theme-doc-markdown a,
+.theme-blog-markdown a {
+  font-weight: 600;
+}
+
+.theme-doc-markdown ul li,
+.theme-blog-markdown ul li,
+.theme-doc-markdown ol li,
+.theme-blog-markdown ol li {
+  margin: 0.35rem 0;
+}
+
+.theme-doc-markdown blockquote,
+.theme-blog-markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--site-surface-0) 84%, #000 16%);
+  border-radius: 8px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.65rem 0.9rem;
+}
+
+.theme-doc-markdown code,
+.theme-blog-markdown code {
+  border: 1px solid var(--site-border);
+  border-radius: 6px;
+  padding: 0.08rem 0.34rem;
+}
+
+.theme-doc-markdown table,
+.theme-blog-markdown table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.theme-doc-markdown table th,
+.theme-blog-markdown table th {
+  background: color-mix(in srgb, var(--site-surface-2) 84%, transparent 16%);
+}
+
+.note-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.5rem 0 0.9rem;
+  padding: 0.22rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.note-status::before {
+  content: "";
+  width: 0.44rem;
+  height: 0.44rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.note-status--draft {
+  color: #e8a838;
+  border-color: rgba(232, 168, 56, 0.45);
+  background: rgba(232, 168, 56, 0.14);
+}
+
+.note-status--reviewed {
+  color: #4ec9b0;
+  border-color: rgba(78, 201, 176, 0.42);
+  background: rgba(78, 201, 176, 0.14);
+}
+
+.note-status--archived {
+  color: #9aa0a6;
+  border-color: rgba(154, 160, 166, 0.42);
+  background: rgba(154, 160, 166, 0.16);
 }

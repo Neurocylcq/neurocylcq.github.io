@@ -1,0 +1,9 @@
+{
+  "label": "Sample Project",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Sample Project",
+    "description": "Template pages for project documentation."
+  }
+}

@@ -1,0 +1,151 @@
+.mainContent {
+  padding-bottom: 3.5rem;
+}
+
+.heroBanner {
+  padding: 5rem 0 2.8rem;
+  border-bottom: 1px solid var(--site-border);
+  background:
+    radial-gradient(circle at 5% 8%, rgba(0, 122, 204, 0.15), transparent 35%),
+    radial-gradient(circle at 92% 0%, rgba(78, 201, 176, 0.12), transparent 26%),
+    var(--site-surface-0);
+  animation: panelDrop 560ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes panelDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroKicker {
+  margin: 0;
+  color: var(--site-muted);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.heroTitle {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.95rem, 4vw, 3rem);
+  line-height: 1.08;
+}
+
+.heroSubtitle {
+  margin: 0.9rem 0 0;
+  max-width: 64ch;
+  color: var(--site-muted-strong);
+}
+
+.disclaimer {
+  margin: 0.95rem 0 0;
+  max-width: 70ch;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--site-warning-border);
+  background: var(--site-warning-bg);
+  color: var(--site-warning-text);
+}
+
+.grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.missionPanel,
+.card,
+.panel {
+  margin-top: 1rem;
+  padding: 1.15rem 1.05rem;
+  border: 1px solid var(--site-border);
+  border-radius: 12px;
+  background: var(--site-surface-1);
+}
+
+.missionPanel p {
+  margin: 0.5rem 0 0;
+  color: var(--site-muted-strong);
+}
+
+.missionPanel .quickList {
+  margin-top: 0.65rem;
+}
+
+.card h2 {
+  margin-bottom: 0.45rem;
+}
+
+.card p {
+  color: var(--site-muted-strong);
+}
+
+.panel ol {
+  margin: 0.7rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.panel li {
+  margin: 0.35rem 0;
+  color: var(--site-muted-strong);
+}
+
+.statusTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0;
+}
+
+.timelinePanel {
+  margin-top: 1rem;
+  padding: 1.15rem 1.05rem;
+  border: 1px solid var(--site-border);
+  border-radius: 12px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--site-surface-1) 88%, #1f3b5d 12%), var(--site-surface-1));
+}
+
+.timelineList {
+  margin: 0.7rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.timelineList li {
+  margin: 0.4rem 0;
+  color: var(--site-muted-strong);
+}
+
+.dualGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quickList {
+  margin: 0.7rem 0 0;
+}
+
+.quickList li {
+  margin: 0.35rem 0;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 3rem 0 2.3rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dualGrid {
+    grid-template-columns: 1fr;
+  }
+}
