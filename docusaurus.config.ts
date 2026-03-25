@@ -35,7 +35,40 @@ const config: Config = {
     locales: ["en"],
   },
 
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: [
+    "@docusaurus/theme-live-codeblock",
+    "@docusaurus/theme-mermaid",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      {
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        indexDocs: true,
+        docsRouteBasePath: ["notes", "projects"],
+        // Avoid falling back to non-existent default docs plugin id.
+        docsPluginIdForPreferredVersion: "notes",
+
+        // For Docs using Chinese, it is recomended to set:
+        // language: ["en", "zh"],
+
+        // Customize the keyboard shortcut to focus search bar (default is "mod+k"):
+        searchBarShortcutKeymap: "s", // Use 'S' key
+        // searchBarShortcutKeymap: "ctrl+shift+f", // Use Ctrl+Shift+F
+
+        // If you're using `noIndex: true`, set `forceIgnoreNoIndex` to enable local index:
+        // forceIgnoreNoIndex: true,
+
+        // Enable Ask AI integration:
+        // askAi: {
+        //   project: "your-project-name",
+        //   apiUrl: "https://your-api-url.com/api/stream",
+        //   hotkey: "cmd+I", // Optional: keyboard shortcut to trigger Ask AI
+        // },
+      },
+    ],
+  ],
 
   markdown: {
     mermaid: true,

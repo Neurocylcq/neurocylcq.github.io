@@ -45,7 +45,8 @@ function HomepageHeader({
           </span>
         </p>
         <p className={styles.disclaimer}>
-          Notes reflect personal understanding and may contain mistakes.
+          This site is mainly a personal, grab-and-go notebook. Many entries are
+          not rigorously validated and may contain errors.
         </p>
         <div className={styles.buttons}>
           <Link className="button button--primary button--lg" to="/notes">
@@ -204,9 +205,9 @@ export default function Home(): ReactNode {
             <div className={styles.policyPanel}>
               <Heading as="h2">Quality Policy</Heading>
               <p>
-                Notes prioritize speed of capture and personal comprehension.
-                Blog posts are curated, revised, and expected to include
-                stronger validation and references.
+                Notes are written primarily for fast personal reuse, not for
+                formal accuracy. Blog posts are the curated channel where claims
+                are reviewed with stronger validation and references.
               </p>
               <div className={styles.policyActions}>
                 <Link to="/notes">Go to Notes</Link>

@@ -326,12 +326,13 @@ export default function About(): ReactNode {
             <p className={styles.heroKicker}>About This Site</p>
             <Heading as="h2">What This Workspace Is For</Heading>
             <p className={styles.heroSubtitle}>
-              A personal technical workspace for capture, refinement, and
-              publication.
+              A personal technical workspace built for quick capture and quick
+              reuse.
             </p>
             <p className={styles.disclaimer}>
-              Notes are personal understanding and may include mistakes,
-              omissions, or outdated details.
+              A large part of these notes has not been strictly validated. Treat
+              them as working memory that may include errors, omissions, or
+              outdated conclusions.
             </p>
           </div>
         </section>
