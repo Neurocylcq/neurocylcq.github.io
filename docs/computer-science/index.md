@@ -3,6 +3,7 @@ title: Computer Science
 slug: /computer-science
 description: Notes on algorithms, systems, and CS fundamentals.
 status: reviewed
+displayed_sidebar: computerScienceSidebar
 ---
 
 # Computer Science

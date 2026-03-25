@@ -3,6 +3,7 @@ title: Machine Learning
 slug: /machine-learning
 description: Notes on ML concepts, models, and experiments.
 status: reviewed
+displayed_sidebar: machineLearningSidebar
 ---
 
 # Machine Learning

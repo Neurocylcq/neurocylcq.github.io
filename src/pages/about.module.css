@@ -12,6 +12,150 @@
   animation: panelDrop 560ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.identityGrid {
+  margin-top: 0.35rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.profileBlock {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.avatar {
+  width: 98px;
+  height: 98px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 40%, var(--site-border) 60%);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  object-fit: cover;
+}
+
+.profileLinks {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 0.8rem;
+}
+
+.profileLinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--site-border);
+  background: var(--site-surface-1);
+}
+
+.heroHeatmapCard {
+  position: relative;
+  overflow: hidden;
+  padding: 0.6rem 0.2rem 0.2rem;
+}
+
+.heroHeatmapCard::after {
+  content: "▦";
+  position: absolute;
+  right: 0.35rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  font-size: 5.6rem;
+  line-height: 1;
+  opacity: 0.07;
+  filter: blur(1.2px);
+  pointer-events: none;
+}
+
+.heatmapHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.yearSwitch {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.yearBtn,
+.yearBtnActive {
+  border: 1px solid color-mix(in srgb, var(--site-border) 76%, transparent 24%);
+  background: color-mix(in srgb, var(--site-surface-1) 32%, transparent 68%);
+  color: var(--site-muted-strong);
+  border-radius: 8px;
+  padding: 0.14rem 0.42rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.yearBtnActive {
+  color: #fff;
+  background: var(--ifm-color-primary);
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 75%, #fff 25%);
+}
+
+.monthRow {
+  margin-top: 0.55rem;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.25rem;
+  color: color-mix(in srgb, var(--site-muted) 72%, var(--ifm-color-content) 28%);
+  font-size: 0.68rem;
+}
+
+.mergeHeatmap {
+  margin-top: 0.52rem;
+  display: grid;
+  grid-template-columns: repeat(26, minmax(0, 1fr));
+  gap: 0.22rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mergeHeatmap span,
+.legendScale i {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
+.level0 {
+  background: transparent;
+  border-color: rgba(162, 184, 206, 0.38);
+  box-shadow: none;
+}
+.level1 { background: #a9d1f6; }
+.level2 { background: #72afe1; }
+.level3 { background: #3f7fb8; }
+.level4 { background: #1f4f7d; }
+
+.legendRow {
+  margin-top: 0.58rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--site-muted);
+  font-size: 0.76rem;
+  position: relative;
+  z-index: 1;
+}
+
+.legendScale {
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: repeat(5, 0.7rem);
+}
+
 @keyframes panelDrop {
   from {
     opacity: 0;
@@ -70,6 +214,10 @@
   background: var(--site-surface-1);
 }
 
+.panel h3 {
+  margin: 0;
+}
+
 .missionPanel p {
   margin: 0.5rem 0 0;
   color: var(--site-muted-strong);
@@ -112,16 +260,6 @@
   background: linear-gradient(160deg, color-mix(in srgb, var(--site-surface-1) 88%, #1f3b5d 12%), var(--site-surface-1));
 }
 
-.timelineList {
-  margin: 0.7rem 0 0;
-  padding-left: 1.2rem;
-}
-
-.timelineList li {
-  margin: 0.4rem 0;
-  color: var(--site-muted-strong);
-}
-
 .dualGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -141,11 +279,25 @@
     padding: 3rem 0 2.3rem;
   }
 
+  .identityGrid {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .profileBlock {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }
 
   .dualGrid {
     grid-template-columns: 1fr;
+  }
+
+  .mergeHeatmap {
+    grid-template-columns: repeat(16, minmax(0, 1fr));
   }
 }

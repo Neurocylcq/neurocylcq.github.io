@@ -2,6 +2,7 @@
 title: CS Foundations
 description: Baseline concepts and references.
 status: draft
+displayed_sidebar: computerScienceSidebar
 ---
 
 # CS Foundations

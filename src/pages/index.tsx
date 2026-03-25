@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -6,16 +6,37 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
-function HomepageHeader() {
+type HeaderProps = {
+  typedTitle: string;
+  typedTagline: string;
+  titleDone: boolean;
+  taglineDone: boolean;
+};
+
+function HomepageHeader({ typedTitle, typedTagline, titleDone, taglineDone }: HeaderProps) {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={styles.heroBanner}>
       <div className="container">
         <p className={styles.heroKicker}>Personal Knowledge Workspace</p>
-        <Heading as="h1" className={styles.heroTitle}>
-          {siteConfig.title}
+        <Heading as="h1" className={`${styles.heroTitle} ${styles.typeShell}`}>
+          {typedTitle}
+          <span
+            className={styles.typingCursor}
+            aria-hidden="true"
+            style={{ visibility: titleDone ? "hidden" : "visible" }}>
+            |
+          </span>
         </Heading>
-        <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+        <p className={`${styles.heroSubtitle} ${styles.typeShell}`}>
+          {typedTagline}
+          <span
+            className={styles.typingCursor}
+            aria-hidden="true"
+            style={{ visibility: taglineDone ? "visible" : "visible" }}>
+            |
+          </span>
+        </p>
         <p className={styles.disclaimer}>
           Notes reflect personal understanding and may contain mistakes.
         </p>
@@ -37,6 +58,57 @@ function HomepageHeader() {
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
+  const [typedTitle, setTypedTitle] = useState("");
+  const [typedTagline, setTypedTagline] = useState("");
+  const [titleDone, setTitleDone] = useState(false);
+  const [taglineDone, setTaglineDone] = useState(false);
+
+  useEffect(() => {
+    const titleText = siteConfig.title;
+    const taglineText = siteConfig.tagline ?? "";
+    let timer: number | undefined;
+    let active = true;
+
+    const typeText = (
+      text: string,
+      speed: number,
+      onTick: (value: string) => void,
+      onDone: () => void,
+      startDelay = 0,
+    ) => {
+      let index = 0;
+      const run = () => {
+        if (!active) {
+          return;
+        }
+        index += 1;
+        onTick(text.slice(0, index));
+        if (index < text.length) {
+          timer = window.setTimeout(run, speed);
+          return;
+        }
+        onDone();
+      };
+      timer = window.setTimeout(run, startDelay);
+    };
+
+    setTypedTitle("");
+    setTypedTagline("");
+    setTitleDone(false);
+    setTaglineDone(false);
+
+    typeText(titleText, 68, setTypedTitle, () => {
+      setTitleDone(true);
+      typeText(taglineText, 24, setTypedTagline, () => setTaglineDone(true), 260);
+    });
+
+    return () => {
+      active = false;
+      if (timer) {
+        window.clearTimeout(timer);
+      }
+    };
+  }, [siteConfig.tagline, siteConfig.title]);
 
   useEffect(() => {
     const nodes = document.querySelectorAll("[data-reveal]");
@@ -59,7 +131,12 @@ export default function Home(): ReactNode {
     <Layout
       title={`${siteConfig.title} | Home`}
       description="Personal notes, formal blog posts, and project wiki documentation.">
-      <HomepageHeader />
+      <HomepageHeader
+        typedTitle={typedTitle}
+        typedTagline={typedTagline}
+        titleDone={titleDone}
+        taglineDone={taglineDone}
+      />
       <main className={styles.mainContent}>
         <section className="container">
           <div className={styles.statsRow} data-reveal>

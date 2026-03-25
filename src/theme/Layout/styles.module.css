@@ -1,0 +1,25 @@
+.sidebarFab {
+  position: fixed;
+  z-index: 1200;
+  transform: translateX(-50%);
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 56%, var(--site-border) 44%);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--site-surface-1) 90%, transparent 10%);
+  color: var(--ifm-color-content);
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+.sidebarFab:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 16%, var(--site-surface-1) 84%);
+}
+
+@media screen and (max-width: 996px) {
+  .sidebarFab {
+    display: none;
+  }
+}

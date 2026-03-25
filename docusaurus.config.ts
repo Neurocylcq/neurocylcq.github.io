@@ -48,10 +48,7 @@ const config: Config = {
     [
       "classic",
       {
-        docs: {
-          sidebarPath: "./sidebarsNotes.ts",
-          routeBasePath: "notes",
-        },
+        docs: false,
         blog: {
           blogTitle: "Blog",
           blogDescription: "Reviewed posts with references and stronger validation.",
@@ -75,6 +72,15 @@ const config: Config = {
 
   plugins: [
     "./plugins/notes-status-validator.cjs",
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "notes",
+        path: "docs",
+        routeBasePath: "notes",
+        sidebarPath: "./sidebarsNotes.ts",
+      },
+    ],
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -122,7 +128,15 @@ const config: Config = {
             { to: "/notes/status-system", label: "Status System" },
           ],
         },
-        { to: "/projects", label: "Projects", position: "left" },
+        {
+          type: "dropdown",
+          position: "left",
+          label: "Projects",
+          items: [
+            { to: "/projects", label: "Overview" },
+            { to: "/projects/sample-project", label: "Sample Project" },
+          ],
+        },
         { to: "/apps", label: "Apps", position: "left", className: "navbar-apps-pill" },
         { to: "/about", label: "About", position: "left" },
         {

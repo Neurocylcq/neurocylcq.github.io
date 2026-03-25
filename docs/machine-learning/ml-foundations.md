@@ -2,6 +2,7 @@
 title: ML Foundations
 description: Core foundations and framing concepts.
 status: draft
+displayed_sidebar: machineLearningSidebar
 ---
 
 # ML Foundations

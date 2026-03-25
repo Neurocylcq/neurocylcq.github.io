@@ -3,6 +3,7 @@ title: Notes Overview
 slug: /
 description: Fast personal notes for daily lookup and review.
 status: reviewed
+displayed_sidebar: notesOverviewSidebar
 ---
 
 # Notes Overview
