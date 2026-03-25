@@ -24,14 +24,17 @@ function walkMarkdownFiles(rootDir) {
 }
 
 function getFrontMatterStatus(source) {
-  if (!source.startsWith("---\n")) {
+  // Normalize BOM and Windows line endings to parse frontmatter consistently across platforms.
+  const normalized = source.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+
+  if (!normalized.startsWith("---\n")) {
     return null;
   }
-  const end = source.indexOf("\n---", 4);
+  const end = normalized.indexOf("\n---", 4);
   if (end < 0) {
     return null;
   }
-  const frontmatter = source.slice(4, end);
+  const frontmatter = normalized.slice(4, end);
   const match = frontmatter.match(/^status:\s*([a-zA-Z-]+)\s*$/m);
   return match ? match[1].toLowerCase() : null;
 }
