@@ -3,7 +3,7 @@ title: Notes Overview
 slug: /
 description: Fast personal notes for daily lookup and review.
 status: reviewed
-displayed_sidebar: notesOverviewSidebar
+displayed_sidebar: notesHomeSidebar
 ---
 
 # Notes Overview
@@ -26,8 +26,9 @@ Use explicit status labels to communicate confidence:
 
 ## Main Categories
 
-- [Machine Learning](/notes/machine-learning)
-- [Computer Science](/notes/computer-science)
+- [Machine Learning](/notes/ml)
+- [Deep Learning](/notes/dl)
+- [Computer Science](/notes/cs)
 
 ## How To Use This Section
 

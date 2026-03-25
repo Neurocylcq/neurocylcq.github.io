@@ -35,10 +35,7 @@ const config: Config = {
     locales: ["en"],
   },
 
-  themes: [
-    '@docusaurus/theme-live-codeblock',
-    '@docusaurus/theme-mermaid'
-  ],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
 
   markdown: {
     mermaid: true,
@@ -51,7 +48,8 @@ const config: Config = {
         docs: false,
         blog: {
           blogTitle: "Blog",
-          blogDescription: "Reviewed posts with references and stronger validation.",
+          blogDescription:
+            "Reviewed posts with references and stronger validation.",
           routeBasePath: "blog",
           showReadingTime: true,
           feedOptions: {
@@ -76,18 +74,54 @@ const config: Config = {
       "@docusaurus/plugin-content-docs",
       {
         id: "notes",
-        path: "docs",
+        path: "docs/notes-home",
         routeBasePath: "notes",
-        sidebarPath: "./sidebarsNotes.ts",
+        sidebarPath: "./sidebars/sidebarsNotesHome.ts",
       },
     ],
     [
       "@docusaurus/plugin-content-docs",
       {
-        id: "projects",
-        path: "projects",
+        id: "notes-ml",
+        path: "docs/machine-learning",
+        routeBasePath: "notes/ml",
+        sidebarPath: "./sidebars/sidebarsNotesMl.ts",
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "notes-dl",
+        path: "docs/deep-learning",
+        routeBasePath: "notes/dl",
+        sidebarPath: "./sidebars/sidebarsNotesDl.ts",
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "notes-cs",
+        path: "docs/computer-science",
+        routeBasePath: "notes/cs",
+        sidebarPath: "./sidebars/sidebarsNotesCs.ts",
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "projects-overview",
+        path: "projects/overview",
         routeBasePath: "projects",
-        sidebarPath: "./sidebarsProjects.ts",
+        sidebarPath: "./sidebars/sidebarsProjectsOverview.ts",
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "projects-sample",
+        path: "projects/sample-project",
+        routeBasePath: "projects/sample",
+        sidebarPath: "./sidebars/sidebarsProjectsSample.ts",
       },
     ],
   ],
@@ -122,10 +156,36 @@ const config: Config = {
           position: "left",
           label: "Notes",
           items: [
-            { to: "/notes", label: "Overview" },
-            { to: "/notes/machine-learning", label: "Machine Learning" },
-            { to: "/notes/computer-science", label: "Computer Science" },
-            { to: "/notes/status-system", label: "Status System" },
+            {
+              type: "docSidebar",
+              label: "Overview",
+              docsPluginId: "notes",
+              sidebarId: "notesHomeSidebar",
+            },
+            {
+              type: "docSidebar",
+              label: "Machine Learning",
+              docsPluginId: "notes-ml",
+              sidebarId: "machineLearningSidebar",
+            },
+            {
+              type: "docSidebar",
+              label: "Deep Learning",
+              docsPluginId: "notes-dl",
+              sidebarId: "deepLearningSidebar",
+            },
+            {
+              type: "docSidebar",
+              label: "Computer Science",
+              docsPluginId: "notes-cs",
+              sidebarId: "computerScienceSidebar",
+            },
+            {
+              type: "doc",
+              label: "Status System",
+              docsPluginId: "notes",
+              docId: "status-system",
+            },
           ],
         },
         {
@@ -134,10 +194,15 @@ const config: Config = {
           label: "Projects",
           items: [
             { to: "/projects", label: "Overview" },
-            { to: "/projects/sample-project", label: "Sample Project" },
+            { to: "/projects/sample", label: "Sample Project" },
           ],
         },
-        { to: "/apps", label: "Apps", position: "left", className: "navbar-apps-pill" },
+        {
+          to: "/apps",
+          label: "Apps",
+          position: "left",
+          className: "navbar-apps-pill",
+        },
         { to: "/about", label: "About", position: "left" },
         {
           href: "https://github.com/Neurocylcq",
@@ -157,11 +222,15 @@ const config: Config = {
             },
             {
               label: "Machine Learning",
-              to: "/notes/machine-learning",
+              to: "/notes/ml",
+            },
+            {
+              label: "Deep Learning",
+              to: "/notes/dl",
             },
             {
               label: "Computer Science",
-              to: "/notes/computer-science",
+              to: "/notes/cs",
             },
           ],
         },
@@ -180,6 +249,10 @@ const config: Config = {
             {
               label: "Project Wiki",
               to: "/projects",
+            },
+            {
+              label: "Sample Project",
+              to: "/projects/sample",
             },
           ],
         },
@@ -215,7 +288,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.vsLight,
       darkTheme: prismThemes.vsDark,
-    }
+    },
   } satisfies Preset.ThemeConfig,
 };
 

@@ -1,7 +1,6 @@
 ---
 title: Sample Test Note Alpha Child
 description: Child page under sample project alpha test note.
-slug: /sample-project/test-note-alpha/child
 ---
 
 # Sample Test Note Alpha Child

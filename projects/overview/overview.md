@@ -17,4 +17,4 @@ This section is a wiki for project design, implementation details, and operation
 
 ## Project Index
 
-- [Sample Project](./sample-project)
+- [Sample Project](/projects/sample)

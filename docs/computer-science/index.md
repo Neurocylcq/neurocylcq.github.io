@@ -1,6 +1,6 @@
 ---
 title: Computer Science
-slug: /computer-science
+slug: /
 description: Notes on algorithms, systems, and CS fundamentals.
 status: reviewed
 displayed_sidebar: computerScienceSidebar
@@ -21,5 +21,6 @@ A category for practical and theoretical CS notes.
 
 ## First Link
 
-- [CS Foundations](/notes/computer-science/cs-foundations)
+- [CS Foundations](/notes/cs/cs-foundations)
+- [Process and Thread Model](/notes/cs/systems/process-thread-model)
 - [Status System](/notes/status-system)

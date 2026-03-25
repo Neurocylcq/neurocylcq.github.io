@@ -1,6 +1,6 @@
 ---
 title: Sample Project
-slug: /sample-project
+slug: /
 description: Template structure for project wiki pages.
 ---
 

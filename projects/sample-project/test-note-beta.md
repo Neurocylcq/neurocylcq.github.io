@@ -1,7 +1,6 @@
 ---
 title: Sample Test Note Beta
 description: Second validation page in Sample Project sidebar.
-slug: /sample-project/test-note-beta
 ---
 
 # Sample Test Note Beta
@@ -13,4 +12,4 @@ Second test page for Sample Project sidebar validation.
 
 ## Child Link
 
-- [Sample Test Note Beta Child](/projects/sample-project/test-note-beta/child)
+- [Sample Test Note Beta Child](/projects/sample/test-note-beta-child)

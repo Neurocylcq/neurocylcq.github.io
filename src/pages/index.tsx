@@ -1,10 +1,10 @@
 import { useEffect, useState, type ReactNode } from "react";
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import Heading from "@theme/Heading";
 
-import styles from './index.module.css';
+import styles from "./index.module.css";
 
 type HeaderProps = {
   typedTitle: string;
@@ -13,7 +13,12 @@ type HeaderProps = {
   taglineDone: boolean;
 };
 
-function HomepageHeader({ typedTitle, typedTagline, titleDone, taglineDone }: HeaderProps) {
+function HomepageHeader({
+  typedTitle,
+  typedTagline,
+  titleDone,
+  taglineDone,
+}: HeaderProps) {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={styles.heroBanner}>
@@ -24,7 +29,8 @@ function HomepageHeader({ typedTitle, typedTagline, titleDone, taglineDone }: He
           <span
             className={styles.typingCursor}
             aria-hidden="true"
-            style={{ visibility: titleDone ? "hidden" : "visible" }}>
+            style={{ visibility: titleDone ? "hidden" : "visible" }}
+          >
             |
           </span>
         </Heading>
@@ -33,7 +39,8 @@ function HomepageHeader({ typedTitle, typedTagline, titleDone, taglineDone }: He
           <span
             className={styles.typingCursor}
             aria-hidden="true"
-            style={{ visibility: taglineDone ? "visible" : "visible" }}>
+            style={{ visibility: taglineDone ? "visible" : "visible" }}
+          >
             |
           </span>
         </p>
@@ -99,7 +106,13 @@ export default function Home(): ReactNode {
 
     typeText(titleText, 68, setTypedTitle, () => {
       setTitleDone(true);
-      typeText(taglineText, 24, setTypedTagline, () => setTaglineDone(true), 260);
+      typeText(
+        taglineText,
+        24,
+        setTypedTagline,
+        () => setTaglineDone(true),
+        260,
+      );
     });
 
     return () => {
@@ -130,7 +143,8 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`${siteConfig.title} | Home`}
-      description="Personal notes, formal blog posts, and project wiki documentation.">
+      description="Personal notes, formal blog posts, and project wiki documentation."
+    >
       <HomepageHeader
         typedTitle={typedTitle}
         typedTagline={typedTagline}
@@ -159,19 +173,27 @@ export default function Home(): ReactNode {
           <div className={styles.grid} data-reveal>
             <article className={styles.card}>
               <Heading as="h2">Machine Learning Notes</Heading>
-              <p>Fast, practical notes about models, training, and experiments.</p>
-              <Link to="/notes/machine-learning">Open Category</Link>
+              <p>
+                Fast, practical notes about models, training, and experiments.
+              </p>
+              <Link to="/notes/ml">Open Category</Link>
             </article>
 
             <article className={styles.card}>
               <Heading as="h2">Computer Science Notes</Heading>
-              <p>Algorithms, systems, and core CS concepts organized for quick review.</p>
-              <Link to="/notes/computer-science">Open Category</Link>
+              <p>
+                Algorithms, systems, and core CS concepts organized for quick
+                review.
+              </p>
+              <Link to="/notes/cs">Open Category</Link>
             </article>
 
             <article className={styles.card}>
               <Heading as="h2">Projects Wiki</Heading>
-              <p>Design decisions, architecture notes, and implementation references.</p>
+              <p>
+                Design decisions, architecture notes, and implementation
+                references.
+              </p>
               <Link to="/projects">Open Wiki</Link>
             </article>
           </div>
@@ -182,8 +204,9 @@ export default function Home(): ReactNode {
             <div className={styles.policyPanel}>
               <Heading as="h2">Quality Policy</Heading>
               <p>
-                Notes prioritize speed of capture and personal comprehension. Blog posts are
-                curated, revised, and expected to include stronger validation and references.
+                Notes prioritize speed of capture and personal comprehension.
+                Blog posts are curated, revised, and expected to include
+                stronger validation and references.
               </p>
               <div className={styles.policyActions}>
                 <Link to="/notes">Go to Notes</Link>
@@ -196,8 +219,12 @@ export default function Home(): ReactNode {
               <p>Each note can be marked with one of these states:</p>
               <div className={styles.statusTags}>
                 <span className="note-status note-status--draft">Draft</span>
-                <span className="note-status note-status--reviewed">Reviewed</span>
-                <span className="note-status note-status--archived">Archived</span>
+                <span className="note-status note-status--reviewed">
+                  Reviewed
+                </span>
+                <span className="note-status note-status--archived">
+                  Archived
+                </span>
               </div>
               <Link to="/notes/status-system">View Status Guide</Link>
             </div>
@@ -220,9 +247,15 @@ export default function Home(): ReactNode {
             <Heading as="h2">Recent Entry Points</Heading>
             <p>Use these paths to jump straight into your current workflows.</p>
             <ul>
-              <li><Link to="/notes/machine-learning/ml-foundations">ML Foundations</Link></li>
-              <li><Link to="/notes/computer-science/cs-foundations">CS Foundations</Link></li>
-              <li><Link to="/projects/sample-project">Sample Project Wiki</Link></li>
+              <li>
+                <Link to="/notes/ml/ml-foundations">ML Foundations</Link>
+              </li>
+              <li>
+                <Link to="/notes/cs/cs-foundations">CS Foundations</Link>
+              </li>
+              <li>
+                <Link to="/projects/sample">Sample Project Wiki</Link>
+              </li>
             </ul>
           </div>
         </section>
@@ -231,10 +264,18 @@ export default function Home(): ReactNode {
           <div className={styles.quickLinks}>
             <Heading as="h2">Quick Access</Heading>
             <ul>
-              <li><Link to="/notes">Notes Overview</Link></li>
-              <li><Link to="/blog">All Blog Posts</Link></li>
-              <li><Link to="/projects">Projects Index</Link></li>
-              <li><Link to="/about">About This Site</Link></li>
+              <li>
+                <Link to="/notes">Notes Overview</Link>
+              </li>
+              <li>
+                <Link to="/blog">All Blog Posts</Link>
+              </li>
+              <li>
+                <Link to="/projects">Projects Index</Link>
+              </li>
+              <li>
+                <Link to="/about">About This Site</Link>
+              </li>
             </ul>
           </div>
         </section>

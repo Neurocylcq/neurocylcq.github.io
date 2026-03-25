@@ -1,6 +1,6 @@
 ---
 title: Machine Learning
-slug: /machine-learning
+slug: /
 description: Notes on ML concepts, models, and experiments.
 status: reviewed
 displayed_sidebar: machineLearningSidebar
@@ -21,5 +21,6 @@ A category for models, optimization, evaluation, and practical implementation no
 
 ## First Link
 
-- [ML Foundations](/notes/machine-learning/ml-foundations)
+- [ML Foundations](/notes/ml/ml-foundations)
+- [Model Evaluation Basics](/notes/ml/fundamentals/model-evaluation)
 - [Status System](/notes/status-system)

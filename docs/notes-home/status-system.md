@@ -3,7 +3,7 @@ title: Note Status System
 slug: /status-system
 description: Confidence labels used for notes.
 status: reviewed
-displayed_sidebar: statusSystemSidebar
+displayed_sidebar: notesHomeSidebar
 ---
 
 # Note Status System
