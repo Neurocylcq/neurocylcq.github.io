@@ -1,0 +1,9 @@
+### macOS
+# Finder metadata
+.DS_Store
+
+# Thumbnails
+._*
+
+/node_modules
+/build
