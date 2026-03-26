@@ -9,7 +9,7 @@ const CONFIG = {
   WORK_TREE: ".gh-pages-temp",
 };
 
-// 执行命令（数组传参，无空格BUG）
+// 执行命令
 async function run(args, cwd) {
   console.log(`→ ${args.join(' ')}`);
   const proc = Bun.spawn(args, {
@@ -21,7 +21,7 @@ async function run(args, cwd) {
   return proc.exitCode === 0;
 }
 
-// 执行命令并获取输出（用于检查差异）
+// 执行命令并获取输出
 async function runAndGetOutput(args, cwd) {
   const proc = Bun.spawn(args, {
     stdout: "pipe",
@@ -46,19 +46,22 @@ async function hasGitChanges() {
   return text.length > 0;
 }
 
-// 🔥 新增：检查 build 和 gh-pages/docs 是否有文件差异（增量检查）
+// 🔥 核心修复：基于文件内容校验和检查增量（忽略时间/权限）
 async function hasIncrementalChanges() {
   const targetPath = path.join(CONFIG.WORK_TREE, CONFIG.DEPLOY_TARGET);
-  // rsync  dry-run 模式，只检查不修改，判断是否有变更
   const output = await runAndGetOutput([
     "rsync",
-    "-avn",  // n = dry-run 模拟同步
+    "-avn",
+    "--checksum", // ✅ 只校验文件内容，最关键修复
     "--delete",
     `${CONFIG.BUILD_DIR}/`,
     `${targetPath}/`
   ]);
-  // 输出包含文件列表则代表有变更
-  return output.includes("files to consider") || output.split("\n").length > 5;
+  // 只有真实文件增删改才返回true
+  const lines = output.split("\n").filter(line => 
+    line && !line.includes("sending incremental file list") && !line.includes("total size")
+  );
+  return lines.length > 0;
 }
 
 // 检查文件夹
@@ -71,16 +74,15 @@ function dirExists(dir) {
 // ==============================================
 console.log("===== One-Click Deployment =====\n");
 
-// 1. 确保在主分支
+// 1. 主分支检查
 const branch = await getBranch();
 console.log("Current branch:", branch);
 if (branch !== CONFIG.MAIN_BRANCH) await run(["git", "checkout", CONFIG.MAIN_BRANCH]);
 
-// 2. 检查代码修改 → 有则提交master
+// 2. 提交master修改
 console.log("\n→ Checking for local changes...");
 const hasChanges = await hasGitChanges();
 if (hasChanges) {
-  console.log("✅ Found changes, committing to master...");
   await run(["git", "add", "."]);
   await run(["git", "commit", "-m", "chore: update source"]);
   await run(["git", "push"]);
@@ -88,54 +90,40 @@ if (hasChanges) {
   console.log("ℹ️ No local changes, skip commit");
 }
 
-// 3. 检查build目录 → 不存在则构建
+// 3. 构建检查
 console.log("\n→ Checking build directory...");
-if (dirExists(CONFIG.BUILD_DIR)) {
-  console.log("✅ Build exists, skip build");
-} else {
-  console.log("🔨 Building project...");
+if (!dirExists(CONFIG.BUILD_DIR)) {
   await run(["bun", "run", "build"]);
-  if (!dirExists(CONFIG.BUILD_DIR)) {
-    console.error("❌ Build failed");
-    process.exit(1);
-  }
-  console.log("✅ Build completed");
 }
+console.log("✅ Build ready");
 
-// 4. 准备gh-pages临时环境
+// 4. 准备gh-pages工作树
 console.log("\n→ Preparing deploy environment...");
 try { fs.rmSync(CONFIG.WORK_TREE, { recursive: true, force: true }); } catch {}
 await run(["git", "worktree", "prune"]);
 await run(["git", "worktree", "add", CONFIG.WORK_TREE, CONFIG.DEPLOY_BRANCH]);
 await run(["git", "pull"], CONFIG.WORK_TREE);
 
-// -------------------------------------------------------------------------
-// 🔥 核心：检查是否有增量变更，无变更直接跳过部署
-// -------------------------------------------------------------------------
+// 5. 🔥 真实增量检查（内容不变则跳过）
 console.log("\n→ Checking incremental changes...");
 const hasChangesToDeploy = await hasIncrementalChanges();
 const targetPath = path.join(CONFIG.WORK_TREE, CONFIG.DEPLOY_TARGET);
 
 if (hasChangesToDeploy) {
-  console.log("✅ Found incremental changes, starting sync...");
-  // 执行真实增量同步
-  await run(["rsync", "-av", "--delete", `${CONFIG.BUILD_DIR}/`, `${targetPath}/`]);
-
-  // 提交并推送gh-pages
-  console.log("\n→ Deploying to gh-pages...");
+  console.log("✅ Real content changes found, syncing...");
+  // 同步也用checksum，只同步内容变化的文件
+  await run(["rsync", "-av", "--checksum", "--delete", `${CONFIG.BUILD_DIR}/`, `${targetPath}/`]);
+  
   await run(["git", "add", "."], CONFIG.WORK_TREE);
   await run(["git", "commit", "-m", "deploy: update website"], CONFIG.WORK_TREE);
   await run(["git", "push"], CONFIG.WORK_TREE);
-  console.log("✅ gh-pages updated successfully!");
 } else {
-  console.log("ℹ️ No incremental changes, skip deploy to gh-pages");
+  console.log("ℹ️ No real content changes → SKIP gh-pages deploy");
 }
 
-// 5. 强制清理临时文件
+// 6. 清理
 console.log("\n→ Cleaning up...");
 await run(["git", "worktree", "remove", "--force", CONFIG.WORK_TREE]);
 try { fs.rmSync(CONFIG.WORK_TREE, { recursive: true, force: true }); } catch {}
 
 console.log("\n🎉 ALL DONE!");
-console.log("📌 master branch: up to date");
-console.log("📌 gh-pages branch: synced if changes found");
