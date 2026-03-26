@@ -8,7 +8,7 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy_": "cmd /C \"set \"GIT_USER=Neurocylcq\" && set \"DEPLOYMENT_BRANCH=main\" && docusaurus deploy",
-    "deploy": "git add . && git commit -m \"update\" && git push && git checkout gh-pages && rsync -a --delete build/ ./ && git add . && git commit -m \"deploy\" && git push && git checkout master",
+    "deploy": "bun deploy.js",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "sync:heatmap": "node scripts/sync-activity-heatmap.mjs",
