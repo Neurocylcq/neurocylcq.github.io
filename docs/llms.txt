@@ -1,0 +1,17 @@
+# Docs
+
+- [Hello World](/docs): Your first document
+- DeepLearning: Deep learning notes and experiments
+  - [DeepLearning](/docs/deep-learning): DeepLearning notebook home
+  - [1](/docs/deep-learning/1): DeepLearning section 1
+  - [2](/docs/deep-learning/2): DeepLearning section 2
+  - Basics: undefined
+    - [Intro](/docs/deep-learning/basics/intro): DeepLearning basics intro
+    - [Math](/docs/deep-learning/basics/math): DeepLearning basics math
+- Computer: Computer science notes
+  - [Computer](/docs/computer): Computer notebook home
+  - [1](/docs/computer/1): Computer section 1
+  - [2](/docs/computer/2): Computer section 2
+  - Systems: undefined
+    - [OS](/docs/computer/systems/os): Operating systems notes
+    - [Network](/docs/computer/systems/network): Computer networks notes

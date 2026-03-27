@@ -1,0 +1,120 @@
+# Hello World (/docs)
+
+
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+What is Next? [#what-is-next]
+
+<Cards>
+  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
+
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+</Cards>
+
+
+# Components (/docs/test)
+
+
+
+Code Block [#code-block]
+
+```js
+console.log('Hello World');
+```
+
+test [#test]
+
+dsd
+
+asdasd
+aboutsda
+
+asdasd1
+1
+
+22
+
+asdfv
+
+vsav
+
+Cards [#cards]
+
+<Cards>
+  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
+
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+</Cards>
+
+
+# 1 (/docs/computer/1)
+
+
+
+This is Computer section 1.
+
+
+# 2 (/docs/computer/2)
+
+
+
+This is Computer section 2.
+
+
+# Computer (/docs/computer)
+
+
+
+Welcome to the Computer notebook.
+
+
+# 1 (/docs/deep-learning/1)
+
+
+
+This is DeepLearning section 1.
+
+
+# 2 (/docs/deep-learning/2)
+
+
+
+This is DeepLearning section 2.
+
+
+# DeepLearning (/docs/deep-learning)
+
+
+
+Welcome to the DeepLearning notebook.
+
+Use the notebook dropdown in the top nav to switch to another notebook tree.
+
+
+# Network (/docs/computer/systems/network)
+
+
+
+Computer network notes.
+
+
+# OS (/docs/computer/systems/os)
+
+
+
+Operating systems notes.
+
+
+# Intro (/docs/deep-learning/basics/intro)
+
+
+
+Introduction notes for DeepLearning basics.
+
+
+# Math (/docs/deep-learning/basics/math)
+
+
+
+Math notes for gradients, vectors, and tensors.
