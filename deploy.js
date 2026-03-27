@@ -6,7 +6,7 @@ import crypto from 'node:crypto';
 const CONFIG = {
   MAIN_BRANCH: "master",
   DEPLOY_BRANCH: "gh-pages",
-  BUILD_DIR: path.resolve(process.cwd(), "build"),
+  BUILD_DIR: path.resolve(process.cwd(), "out"),
   DEPLOY_TARGET: "docs",
   WORK_TREE: ".gh-pages-temp",
 };

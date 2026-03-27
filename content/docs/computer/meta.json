@@ -1,0 +1,6 @@
+{
+  "title": "Computer",
+  "root": true,
+  "description": "Computer science notes",
+  "pages": ["index", "1", "2", "systems"]
+}

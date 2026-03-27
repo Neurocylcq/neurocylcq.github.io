@@ -1,0 +1,6 @@
+{
+  "title": "DeepLearning",
+  "root": true,
+  "description": "Deep learning notes and experiments",
+  "pages": ["index", "1", "2", "basics"]
+}

@@ -1,0 +1,289 @@
+.container {
+  width: min(1100px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.mainContent {
+  padding-bottom: 3.5rem;
+}
+
+.heroBanner {
+  padding: 5rem 0 2.8rem;
+  border-bottom: 1px solid var(--color-fd-border);
+  background:
+    radial-gradient(circle at 5% 8%, rgba(0, 122, 204, 0.15), transparent 35%),
+    radial-gradient(circle at 92% 0%, rgba(78, 201, 176, 0.12), transparent 26%),
+    color-mix(in srgb, var(--color-fd-card) 76%, transparent 24%);
+}
+
+.identityGrid {
+  margin-top: 0.35rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.profileBlock {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.avatar {
+  width: 98px;
+  height: 98px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--color-fd-primary) 40%, var(--color-fd-border) 60%);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+}
+
+.profileLinks {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 0.8rem;
+}
+
+.profileLinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-fd-border);
+  background: var(--color-fd-card);
+  color: var(--color-fd-foreground);
+}
+
+.profileLinks a:hover {
+  border-color: color-mix(in srgb, var(--color-fd-primary) 58%, var(--color-fd-border) 42%);
+  color: var(--color-fd-primary);
+}
+
+.heroHeatmapCard {
+  position: relative;
+  overflow: hidden;
+  padding: 0.6rem 0.2rem 0.2rem;
+}
+
+.heatmapHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.yearSwitch {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.yearBtn,
+.yearBtnActive {
+  border: 1px solid color-mix(in srgb, var(--color-fd-border) 76%, transparent 24%);
+  background: color-mix(in srgb, var(--color-fd-card) 32%, transparent 68%);
+  color: var(--color-fd-muted-foreground);
+  border-radius: 8px;
+  padding: 0.14rem 0.42rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.yearBtnActive {
+  color: color-mix(in srgb, var(--color-fd-foreground) 92%, var(--color-fd-muted-foreground) 8%);
+  background: color-mix(in srgb, var(--color-fd-primary) 24%, var(--color-fd-card) 76%);
+  border-color: color-mix(in srgb, var(--color-fd-primary) 52%, var(--color-fd-border) 48%);
+}
+
+.heatmapBoard {
+  margin-top: 0.55rem;
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  gap: 0.3rem;
+}
+
+.monthRail {
+  display: grid;
+  color: color-mix(in srgb, var(--color-fd-muted-foreground) 76%, var(--color-fd-foreground) 24%);
+  font-size: 0.52rem;
+}
+
+.monthLabel {
+  align-self: start;
+  justify-self: center;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.mergeHeatmap {
+  display: grid;
+  grid-template-columns: repeat(26, minmax(0, 1fr));
+  gap: 0.2rem;
+}
+
+.heatCell {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 70ms ease, box-shadow 90ms ease;
+}
+
+.heatCell:hover,
+.heatCell:focus-visible {
+  transform: scale(1.07);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28);
+}
+
+.heatCell:focus-visible {
+  outline: none;
+}
+
+.heatTooltip {
+  margin-top: 0.58rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.62rem;
+  border: 1px solid color-mix(in srgb, var(--color-fd-border) 68%, #9ecef5 32%);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-fd-card) 94%, var(--color-fd-primary) 6%);
+}
+
+.heatTooltipLine {
+  font-size: 0.74rem;
+  color: color-mix(in srgb, var(--color-fd-foreground) 86%, var(--color-fd-muted-foreground) 14%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.heroKicker {
+  margin: 0;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.heroTitle {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.95rem, 4vw, 3rem);
+  line-height: 1.08;
+}
+
+.heroSubtitle {
+  margin: 0.9rem 0 0;
+  max-width: 64ch;
+  color: color-mix(in srgb, var(--color-fd-foreground) 84%, var(--color-fd-muted-foreground) 16%);
+}
+
+.disclaimer {
+  margin: 0.95rem 0 0;
+  max-width: 70ch;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--color-fd-primary) 30%, var(--color-fd-border) 70%);
+  background: color-mix(in srgb, var(--color-fd-primary) 8%, transparent 92%);
+}
+
+.grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.missionPanel,
+.card,
+.panel {
+  margin-top: 1rem;
+  padding: 1.15rem 1.05rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 12px;
+  background: var(--color-fd-card);
+}
+
+.card p,
+.panel p,
+.missionPanel p {
+  color: var(--color-fd-muted-foreground);
+}
+
+.statusTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0;
+}
+
+.tagDraft,
+.tagReviewed,
+.tagArchived {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--color-fd-border);
+  font-size: 0.8rem;
+}
+
+.tagDraft {
+  background: color-mix(in srgb, #f59e0b 14%, transparent 86%);
+}
+
+.tagReviewed {
+  background: color-mix(in srgb, #10b981 14%, transparent 86%);
+}
+
+.tagArchived {
+  background: color-mix(in srgb, #64748b 14%, transparent 86%);
+}
+
+.dualGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quickList {
+  margin: 0.7rem 0 0;
+}
+
+.quickList li {
+  margin: 0.35rem 0;
+}
+
+.panel a,
+.quickList a {
+  color: var(--color-fd-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+.panel a:hover,
+.quickList a:hover {
+  color: color-mix(in srgb, var(--color-fd-primary) 78%, var(--color-fd-foreground) 22%);
+}
+
+@media (max-width: 996px) {
+  .heroBanner {
+    padding: 3rem 0 2.3rem;
+  }
+
+  .identityGrid,
+  .profileBlock,
+  .grid,
+  .dualGrid {
+    grid-template-columns: 1fr;
+  }
+}

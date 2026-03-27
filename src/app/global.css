@@ -1,3 +1,38 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/black.css';
 @import 'fumadocs-ui/css/preset.css';
+
+:root {
+	--app-nav-shift: calc(var(--fd-docs-row-3, 112px) - var(--fd-docs-row-1, 0px));
+}
+
+#nd-nav,
+#nd-subnav {
+	transition:
+		transform 220ms ease,
+		background-color 220ms ease,
+		border-color 220ms ease;
+	will-change: transform;
+}
+
+#nd-toc,
+[data-sidebar-placeholder],
+[data-toc-popover],
+[data-sidebar-panel],
+[data-sidebar-panel-expanded] {
+	transition: transform 220ms ease;
+	will-change: transform;
+}
+
+html[data-nav-hidden='true'] #nd-nav,
+html[data-nav-hidden='true'] #nd-subnav {
+	transform: translateY(calc(-100% - 2px));
+}
+
+html[data-nav-hidden='true'] #nd-toc,
+html[data-nav-hidden='true'] [data-sidebar-placeholder],
+html[data-nav-hidden='true'] [data-toc-popover],
+html[data-nav-hidden='true'] [data-sidebar-panel],
+html[data-nav-hidden='true'] [data-sidebar-panel-expanded] {
+	transform: translateY(calc(-1 * var(--app-nav-shift)));
+}

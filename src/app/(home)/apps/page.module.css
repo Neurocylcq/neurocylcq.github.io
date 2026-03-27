@@ -1,0 +1,161 @@
+.container {
+  width: min(1100px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.mainContent {
+  padding-bottom: 3.5rem;
+}
+
+.heroBanner {
+  padding: 4.8rem 0 2.6rem;
+  border-bottom: 1px solid var(--color-fd-border);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(0, 122, 204, 0.15), transparent 36%),
+    radial-gradient(circle at 88% 8%, rgba(38, 127, 224, 0.11), transparent 32%),
+    color-mix(in srgb, var(--color-fd-card) 76%, transparent 24%);
+}
+
+.heroKicker {
+  margin: 0;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  margin: 0.4rem 0 0;
+  font-size: clamp(1.95rem, 4vw, 3rem);
+  line-height: 1.08;
+}
+
+.heroSubtitle {
+  margin: 0.9rem 0 0;
+  max-width: 60ch;
+  color: var(--color-fd-muted-foreground);
+}
+
+.quickJumpPanel {
+  margin-top: 1rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 12px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--color-fd-card) 90%, var(--color-fd-primary) 10%),
+    var(--color-fd-card)
+  );
+}
+
+.jumpLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.7rem;
+}
+
+.grid {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.categorySection {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 12px;
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--color-fd-card) 88%, var(--color-fd-primary) 12%),
+    var(--color-fd-card)
+  );
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.categoryTitle {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.cardGrid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.appCard {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 12px;
+  padding: 0.86rem;
+  background: linear-gradient(
+    170deg,
+    color-mix(in srgb, var(--color-fd-background) 92%, black 8%),
+    color-mix(in srgb, var(--color-fd-card) 86%, black 14%)
+  );
+  text-decoration: none;
+  color: inherit;
+  transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.appCard::after {
+  content: attr(data-icon);
+  position: absolute;
+  right: 0.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4.2rem;
+  line-height: 1;
+  opacity: 0.14;
+  filter: blur(1.4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.appCard:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-fd-primary) 62%, var(--color-fd-border) 38%);
+  background: linear-gradient(
+    170deg,
+    color-mix(in srgb, var(--color-fd-background) 84%, var(--color-fd-primary) 16%),
+    color-mix(in srgb, var(--color-fd-card) 80%, var(--color-fd-primary) 20%)
+  );
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.appCard strong {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.96rem;
+  position: relative;
+  z-index: 1;
+  max-width: 78%;
+}
+
+.appCard p {
+  margin: 0.4rem 0 0;
+  font-size: 0.86rem;
+  color: var(--color-fd-muted-foreground);
+  position: relative;
+  z-index: 1;
+  max-width: 78%;
+}
+
+@media (max-width: 996px) {
+  .heroBanner {
+    padding: 3rem 0 2.2rem;
+  }
+
+  .grid {
+    gap: 0.8rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}
