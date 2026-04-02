@@ -1,4 +1,7 @@
 {
-  "title": "Basics",
-  "pages": ["intro", "math"]
+    "title": "Basics",
+    "pages": [
+        "Token",
+        "Word2Vector"
+    ]
 }
